@@ -1,6 +1,6 @@
 # Rest API for a Contacts Page
  
-This API is created with Spring boot 6.0 
+This API is created with Spring boot 3.1.1
 
 ## Features
 - Models with proper relationships

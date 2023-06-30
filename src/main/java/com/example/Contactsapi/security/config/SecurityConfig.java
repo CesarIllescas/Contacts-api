@@ -70,10 +70,11 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers(
                                         new AntPathRequestMatcher("/api/auth/**"),
-                                        new AntPathRequestMatcher("/v2/api-docs"),
+                                        new AntPathRequestMatcher("/swagger-ui/**"),
+                                        new AntPathRequestMatcher("/v3/api-docs/**"),
                                         new AntPathRequestMatcher("/configuration/**"),
                                         new AntPathRequestMatcher("/webjars/**"),
-                                        new AntPathRequestMatcher("/api/hello/**"),
+                                        new AntPathRequestMatcher("/contactsapi-documentation/**"),
                                         new AntPathRequestMatcher("/")
                                 )
                                 .permitAll()

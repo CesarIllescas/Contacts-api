@@ -6,6 +6,7 @@ import com.example.Contactsapi.security.payload.JwtResponse;
 import com.example.Contactsapi.security.payload.LoginRequest;
 import com.example.Contactsapi.security.payload.MessageResponse;
 import com.example.Contactsapi.security.payload.RegisterRequest;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -42,7 +43,10 @@ public class AuthController {
         this.encoder = encoder;
         this.jwtTokenUtil = jwtTokenUtil;
     }
-
+    @Operation(
+            summary = "Login",
+            description = "Login to the page by requesting user and password. The response is a jwt token if the user is already registered.Unauthorized it isnt",
+            tags = { "user", "post" })
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest loginRequest){
 
@@ -56,7 +60,10 @@ public class AuthController {
 
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
-
+    @Operation(
+            summary = "Creates an user",
+            description = "Creates  an user by requesting a username and password. The response is message depending if the register was made succesfully or failed",
+            tags = { "user", "post" })
     @PostMapping("/register")
     public ResponseEntity<MessageResponse> register(@RequestBody RegisterRequest signUpRequest) {
 
@@ -83,7 +90,7 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
-
+/*
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/hello-admin")
     public String adminPing(){
@@ -101,4 +108,6 @@ public class AuthController {
     public String userPing(){
         return "Any User Can Read This";
     }
+
+ */
 }
